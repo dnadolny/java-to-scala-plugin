@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Java to Scala plugin (Test)
+Bundle-SymbolicName: com.github.dnadolny.javatoscala.tests
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: Donny Nadolny
+Fragment-Host: com.github.dnadolny.javatoscala
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.scala-ide.scala.library,
+ org.eclipse.equinox.weaving.aspectj,
+ org.junit4;bundle-version="4.5.0",
+ org.scala-ide.sdt.core
+Import-Package: scala.tools.eclipse.testsetup,
+ org.aspectj.weaver.loadtime.definition
+Bundle-ClassPath: .
