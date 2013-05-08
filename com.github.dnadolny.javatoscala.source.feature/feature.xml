@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
   id="com.github.dnadolny.javatoscala.source.feature"
-  label="Java to Scala plugin sources"
+  label="Java to Scala sources"
   version="0.1.0.qualifier"
   provider-name="example.org">
 
   <description url="http://example.org/">
-     The sources of a template of a Scala IDE plug-in.
+     Source code for the Java to Scala plugin.
   </description>
 
    <copyright url="http://example.org/downloads/">
-      Copyright (C) 2012 ______TO_UPDATE_______. 
+      Copyright (C) 2013 Donny Nadolny. 
 All rights reserved.
    </copyright>
 
@@ -192,18 +192,7 @@ All rights reserved.
 
    END OF TERMS AND CONDITIONS
 
-   APPENDIX: How to apply the Apache License to your work.
-
-      To apply the Apache License to your work, attach the following
-      boilerplate notice, with the fields enclosed by brackets "[]"
-      replaced with your own identifying information. (Don't include
-      the brackets!)  The text should be enclosed in the appropriate
-      comment syntax for the file format. We also recommend that a
-      file or class name and description of purpose be included on the
-      same "printed page" as the copyright notice for easier
-      identification within third-party archives.
-
-   Copyright [yyyy] [name of copyright owner]
+   Copyright 2013 Donny Nadolny
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.

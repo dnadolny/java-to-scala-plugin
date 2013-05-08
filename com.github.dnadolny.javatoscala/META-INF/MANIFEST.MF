@@ -10,7 +10,7 @@ Require-Bundle:
  org.eclipse.core.runtime,
  org.eclipse.debug.ui,
  org.eclipse.help,
- org.eclipse.jdt.core;bundle-version="[3.6.0,3.7.10)",
+ org.eclipse.jdt.core,
  org.eclipse.jdt.debug.ui,
  org.eclipse.jdt.junit,
  org.eclipse.jdt.launching,
@@ -23,7 +23,7 @@ Require-Bundle:
  org.eclipse.ui.ide,
  org.scala-ide.scala.library,
  org.scala-ide.scala.compiler,
- org.scala-ide.sdt.core;bundle-version="[2.0.0, 4.0.0)"
+ org.scala-ide.sdt.core
 Import-Package: 
  com.ibm.icu.text;apply-aspects:=false;org.eclipse.swt.graphics;apply-aspects:=false,
  scala.tools.eclipse;apply-aspects:=false,
