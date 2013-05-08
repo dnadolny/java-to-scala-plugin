@@ -23,10 +23,15 @@ Require-Bundle:
  org.eclipse.ui.ide,
  org.scala-ide.scala.library,
  org.scala-ide.scala.compiler,
- org.scala-ide.sdt.core;bundle-version="[2.0.0, 2.2.0)"
+ org.scala-ide.sdt.core;bundle-version="[2.0.0, 4.0.0)"
 Import-Package: 
  com.ibm.icu.text;apply-aspects:=false;org.eclipse.swt.graphics;apply-aspects:=false,
  scala.tools.eclipse;apply-aspects:=false,
  scala.tools.eclipse.contribution.weaving.jdt.ui.javaeditor.formatter;apply-aspects:=false
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Bundle-ClassPath: .
+Bundle-ClassPath: .,
+ target/lib/scalagen-0.2.2_scala-version.jar,
+ target/dependency/javaparser-1.0.8.jar,
+ target/dependency/commons-lang3-3.0.1.jar,
+ target/dependency/collections-generic-4.01.jar,
+ target/dependencycommons-io-1.3.2.jar

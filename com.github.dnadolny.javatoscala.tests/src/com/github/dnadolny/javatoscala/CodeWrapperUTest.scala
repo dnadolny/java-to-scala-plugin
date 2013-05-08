@@ -1,0 +1,41 @@
+package com.github.dnadolny.javatoscala
+
+import org.junit.Test
+import org.junit.Assert._
+import CodeWrapper._
+import com.github.dnadolny.javatoscala.conversion.ScalagenConverter
+
+class CodeWrapperUTest {
+  @Test
+  def `wrap code with class` {
+    assertEquals("class Snippet { code }", wrapWithClass("code"))
+  }
+  
+  @Test
+  def `wrap code with class and method` {
+    assertEquals("class Snippet { public void snippet() { code } }", wrapWithClassAndMethod("code")) 
+  }
+  
+  @Test
+  def `remove class wrapper (including newlines) and fix indentation` {
+    println(ScalagenConverter.safeConvert("class Snippet { private void snippet() { String str; } }"))
+    assertEquals("code\n  code2\ncode3", removeClassWrapper("""class Snippet {
+
+  code
+    code2
+  code3
+}"""))
+  }
+  
+  @Test
+  def `remove class/method wrapper and fix indentation` {
+    assertEquals("code\n  code2\ncode3", removeClassAndMethodWrapper("""class Snippet {
+
+  def snippet() {
+    code
+      code2
+    code3
+  }
+}"""))
+  }
+}

@@ -1,28 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <plugin>
-   <extension
-         point="org.eclipse.ui.actionSets">
-      <actionSet
-            id="example.actionSet"
-            label="Sample Action Set"
-            visible="true">
-         <menu
-               id="sampleMenu"
-               label="Sample &amp;Menu">
-            <separator
-                  name="sampleGroup">
-            </separator>
-         </menu>
-         <action
-               class="com.github.dnadolny.javatoscala.SampleAction"
-               icon="icons/sample.gif"
-               id="com.github.dnadolny.javatoscala.sampleAction"
-               label="&amp;Sample Action"
-               menubarPath="sampleMenu/sampleGroup"
-               toolbarPath="sampleGroup"
-               tooltip="Hello, Scala world">
-         </action>
-      </actionSet>
-   </extension>
+  <extension point="org.eclipse.ui.commands">
+    <command
+      name="Paste (convert Java to Scala)"
+      description="Paste (convert Java to Scala)"
+      id="com.github.dnadolny.javatoscala.pasteConvertJavaToScalaCommand"/>
+      categoryId="org.eclipse.jdt.ui.category.source"
+  </extension>
+
+  <extension point="org.eclipse.ui.bindings">
+    <key
+      commandId="com.github.dnadolny.javatoscala.pasteConvertJavaToScalaCommand"
+      schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+      sequence="M1+M2+V" />
+  </extension>
+
+  <extension point="org.eclipse.ui.handlers">
+    <handler
+      class="com.github.dnadolny.javatoscala.PasteJavaAsScalaCommand"
+      commandId="com.github.dnadolny.javatoscala.pasteConvertJavaToScalaCommand">
+    </handler>
+  </extension>
+
+  <extension point="org.eclipse.ui.menus">
+    <menuContribution locationURI="popup:#CompilationUnitEditorContext?after=paste">
+      <command
+        commandId="com.github.dnadolny.javatoscala.pasteConvertJavaToScalaCommand"
+        id="pasteAsScala"
+        label="Paste (convert Java to Scala)"
+        mnemonic="c"
+        style="push">
+        <visibleWhen checkEnabled="false">
+          <with variable="activeEditorId">
+            <equals value="scala.tools.eclipse.ScalaSourceFileEditor"></equals>
+          </with>
+        </visibleWhen>
+      </command>
+    </menuContribution>
+  </extension>
 </plugin>
