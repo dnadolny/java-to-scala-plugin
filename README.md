@@ -1,29 +1,12 @@
-scala-ide-plugin.g8
-===================
+Java to Scala plugin (Eclipse IDE)
+==================================
 
-Giger8 template for Eclipse plugins based on the Scala IDE.
+This is a plugin for the Scala IDE that lets you convert Java to Scala.
 
-This template produces 5 Eclipse plugins:
-
-* the plugin itself
-* the `plugin.tests` fragment
-* an Eclipse feature
-* an Eclipse source feature
-* an Eclipse update-site
-
-The projects can readily be imported inside Eclipse. Additionally, you have maven `pom` files
-based on Tycho, enabling command line builds.
+To use it, copy the Java code to your clipboard, open a Scala editor, and press Ctrl+Shift+V (or right click and select "Paste (convert Java to Scala)").
 
 ## Note:
 
-By default, the maven build is performed against the latest stable versions (Scala IDE 2.0 and Scala 2.9).
-The available profiles are:
+You should treat this as a starting point for the conversion, not the final result. There can be compilation errors in the converted Scala code (for various hard to fix reasons), and there might be actual errors that aren't caught by the compiler.
 
-* `scala-ide-2.0-scala-2.9` (default)
-* `scala-ide-2.0.x-scala-2.9`
-* `scala-ide-master-scala-2.9`
-* `scala-ide-master-scala-trunk`
-
-Run maven like this:
-
-    mvn -P scala-ide-master-scala-trunk clean install
+One current limitation which could come up frequently is that Scalagen (the library that does the conversion) doesn't maintain non-javadoc comments in code. This means you need to manually copy/paste any comments from the original Java to the converted Scala.
