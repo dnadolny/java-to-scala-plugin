@@ -14,7 +14,7 @@
     <dependency>
       <groupId>com.mysema.scalagen</groupId>
       <artifactId>scalagen_${scala.version}</artifactId>
-      <version>0.2.2.fake</version>
+      <version>0.3.0</version>
     </dependency>
   </dependencies>
 
@@ -37,7 +37,7 @@
                   <groupId>com.mysema.scalagen</groupId>
                   <artifactId>scalagen_${scala.version}</artifactId>
                   <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                  <destFileName>scalagen-0.2.2_scala-version.jar</destFileName>
+                  <destFileName>scalagen-0.3.0_scala-version.jar</destFileName>
                 </artifactItem>
                 <artifactItem>
                   <groupId>com.google.code.javaparser</groupId>

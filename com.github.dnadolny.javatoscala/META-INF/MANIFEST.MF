@@ -30,7 +30,7 @@ Import-Package:
  scala.tools.eclipse.contribution.weaving.jdt.ui.javaeditor.formatter;apply-aspects:=false
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ClassPath: .,
- target/lib/scalagen-0.2.2_scala-version.jar,
+ target/lib/scalagen-0.3.0_scala-version.jar,
  target/dependency/javaparser-1.0.8.jar,
  target/dependency/commons-lang3-3.0.1.jar,
  target/dependency/collections-generic-4.01.jar,
