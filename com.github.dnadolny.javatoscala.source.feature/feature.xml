@@ -3,13 +3,13 @@
   id="com.github.dnadolny.javatoscala.source.feature"
   label="Java to Scala sources"
   version="0.1.0.qualifier"
-  provider-name="example.org">
+  provider-name="com.github.dnadolny">
 
-  <description url="http://example.org/">
+  <description url="https://github.com/dnadolny/java-to-scala-plugin">
      Source code for the Java to Scala plugin.
   </description>
 
-   <copyright url="http://example.org/downloads/">
+   <copyright url="https://github.com/dnadolny/java-to-scala-plugin">
       Copyright (C) 2013 Donny Nadolny. 
 All rights reserved.
    </copyright>

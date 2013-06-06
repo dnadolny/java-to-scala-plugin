@@ -6,11 +6,11 @@
       provider-name="com.github.dnadolny"
       plugin="com.github.dnadolny.javatoscala">
 
-   <description url="http://example.org">
+   <description url="https://github.com/dnadolny/java-to-scala-plugin">
       Convert Java to Scala with the hotkey Ctrl+Shift+V, or with the context menu item &quot;Paste (convert Java to Scala)&quot;.
    </description>
 
-   <copyright url="http://example.org/downloads/">
+   <copyright url="https://github.com/dnadolny/java-to-scala-plugin">
       Copyright (C) 2013 Donny Nadolny.
 All rights reserved.
    </copyright>
