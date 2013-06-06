@@ -5,6 +5,14 @@ This is a plugin for the Scala IDE that lets you convert Java to Scala.
 
 To use it, copy the Java code to your clipboard, open a Scala editor, and press Ctrl+Shift+V (or right click and select "Paste (convert Java to Scala)").
 
+## Installation (Eclipse Update Site)
+
+In Eclipse go to Help > Install New Software, then add the appropriate update site below. You need to have the [Scala IDE](http://scala-ide.org) installed already.
+* Scala 2.9 and Eclipse 3.7 (Indigo) - http://dnadolny.github.io/java-to-scala-update-site/e37-scala29-3.0/
+* Scala 2.9 and Eclipse 4.2 (Juno) - http://dnadolny.github.io/java-to-scala-update-site/e38-scala29-3.0/
+* Scala 2.10 and Eclipse 3.7 (Indigo) - http://dnadolny.github.io/java-to-scala-update-site/e37-scala210-3.0/
+* Scala 2.10 and Eclipse 4.2 (Juno) - http://dnadolny.github.io/java-to-scala-update-site/e38-scala210-3.0/
+
 ## Note
 
 You should treat this as a starting point for the conversion, not the final result. There can be compilation errors in the converted Scala code (for various hard to fix reasons), and there might be actual errors that aren't caught by the compiler.
