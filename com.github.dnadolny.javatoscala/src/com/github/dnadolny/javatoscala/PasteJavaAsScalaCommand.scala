@@ -11,10 +11,22 @@ import org.eclipse.swt.dnd.TextTransfer
 import org.eclipse.swt.widgets.Display
 import org.eclipse.text.edits.ReplaceEdit
 import org.eclipse.ui.handlers.HandlerUtil
+import scala.tools.eclipse.ScalaPlugin
 
 import com.github.dnadolny.javatoscala.conversion.ScalagenConverter
 
 class PasteJavaAsScalaCommand(snippetConverter: SnippetConverter) extends AbstractHandler {
+  private val AlreadyPrintedNoticeKey = "com.github.dnadolny.java-to-scala.alreadyPrintedNotice"
+  private val PluginUrl = "https://github.com/dnadolny/java-to-scala-plugin"
+  private val ConversionWarning = """/*
+ * One-time warning:
+ * The Java to Scala conversion is nowhere near perfect (for various reasons).
+ * The recommended way to use this feature is as the starting point for a conversion.
+ * You should expect to heavily refactor the converted code, as well as review it for correctness.
+ *
+ * Report bugs to: """ + PluginUrl + """
+ */
+"""
 
   def this() = this(new SnippetConverter(ScalagenConverter))
 
@@ -33,7 +45,14 @@ class PasteJavaAsScalaCommand(snippetConverter: SnippetConverter) extends Abstra
         val offset = textSelection.getOffset()
 
         snippetConverter.convertSnippet(text) match {
-          case Some(scala) => {
+          case Some(convertedScala) => {
+            val scala = if (alreadyPrintedNotice) {
+              convertedScala
+            }
+            else {
+              setAlreadyPrintedNotice()
+              ConversionWarning + convertedScala
+            }
             val numSpaces = document.get(0, offset).reverse.indexOf('\n')
             val indentedScala = Indenter.indentAllExceptFirstLine(scala, numSpaces)
 
@@ -42,10 +61,14 @@ class PasteJavaAsScalaCommand(snippetConverter: SnippetConverter) extends Abstra
             editor.getSelectionProvider().setSelection(new TextSelection(offset + indentedScala.length, 0))
           }
           case None =>
-            MessageDialog.openError(null, "Error converting Java to Scala", "There was a problem converting Java to Scala.\n\nThis is probably because there was a problem parsing the Java code.\n\nMake sure that the code on the clipboard has flawless syntax, including closing brackets and semicolons, and try again.\n\nReport bugs at https://github.com/dnadolny/java-to-scala-plugin")
+            MessageDialog.openError(null, "Error converting Java to Scala", "There was a problem converting Java to Scala.\n\nThis is probably because there was a problem parsing the Java code.\n\nMake sure that the code on the clipboard has flawless syntax, including closing brackets and semicolons, and try again.\n\nReport bugs at " + PluginUrl)
         }
       case _ => MessageDialog.openError(null, "Error converting Java to Scala", "Couldn't cast the editor to ScalaSourceFileEditor. This should never happen since the plugin.xml won't enable the menu item unless we're in a Scala editor")
     }
     null
   }
+  
+  private def alreadyPrintedNotice = ScalaPlugin.plugin.getPreferenceStore.getBoolean(AlreadyPrintedNoticeKey)
+  
+  private def setAlreadyPrintedNotice() = ScalaPlugin.plugin.getPreferenceStore.setValue(AlreadyPrintedNoticeKey, true)
 }
