@@ -65,5 +65,12 @@ for (String str : strings) {
     }
 }""").get)
   }
+  
+  @Test
+  def `static field has warning that it's static because we didn't try to wrap it in a method (workaround for scalagen/javaparser bug)` {
+    assertEquals("""//***** Static fields/methods below, these should go in a companion object *****
+var a: Int = _
+//***** End of static fields/methods *****""", converter.convertSnippet("static int a;").get)
+  }
 
 }

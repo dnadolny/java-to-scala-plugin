@@ -38,4 +38,33 @@ class CodeWrapperUTest {
   }
 }"""))
   }
+  
+  @Test
+  def `remove object wrapper and warn about static code` {
+    assertEquals("""//***** Static fields/methods below, these should go in a companion object *****
+code
+//***** End of static fields/methods *****""", removeClassWrapper("""object Snippet {
+  code
+}"""))
+  }
+  
+  @Test
+  def `remove wrapper import and format code correctly` {
+    assertEquals("""import abc
+
+instance code
+
+//***** Static fields/methods below, these should go in a companion object *****
+static code
+//***** End of static fields/methods *****""", removeClassWrapper("""import abc
+import Snippet._
+
+object Snippet {
+  static code
+}
+
+class Snippet {
+  instance code
+}"""))
+  }
 }
