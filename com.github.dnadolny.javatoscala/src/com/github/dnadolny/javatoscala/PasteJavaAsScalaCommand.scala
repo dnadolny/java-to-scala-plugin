@@ -42,9 +42,9 @@ class PasteJavaAsScalaCommand(snippetConverter: SnippetConverter) extends Abstra
             editor.getSelectionProvider().setSelection(new TextSelection(offset + indentedScala.length, 0))
           }
           case None =>
-            MessageDialog.openError(null, "Error converting Java to Scala", "There was a problem converting Java to Scala.\n\nThis is probably because there was a problem parsing the Java code.\n\nMake sure that the code on the clipboard has flawless syntax, including closing brackets and semicolons, and try again.")
+            MessageDialog.openError(null, "Error converting Java to Scala", "There was a problem converting Java to Scala.\n\nThis is probably because there was a problem parsing the Java code.\n\nMake sure that the code on the clipboard has flawless syntax, including closing brackets and semicolons, and try again.\n\nReport bugs at https://github.com/dnadolny/java-to-scala-plugin")
         }
-      case _ => () //TODO: error
+      case _ => MessageDialog.openError(null, "Error converting Java to Scala", "Couldn't cast the editor to ScalaSourceFileEditor. This should never happen since the plugin.xml won't enable the menu item unless we're in a Scala editor")
     }
     null
   }
