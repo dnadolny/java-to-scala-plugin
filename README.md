@@ -8,10 +8,8 @@ To use it, copy the Java code to your clipboard, open a Scala editor, and press 
 ## Installation (Eclipse Update Site)
 
 In Eclipse go to Help > Install New Software, then add the appropriate update site below. You need to have the [Scala IDE](http://scala-ide.org) installed already.
-* Scala 2.9 and Eclipse 3.7 (Indigo) - http://dnadolny.github.io/java-to-scala-update-site/e37-scala29-3.0/
-* Scala 2.9 and Eclipse 4.2 (Juno) - http://dnadolny.github.io/java-to-scala-update-site/e38-scala29-3.0/
-* Scala 2.10 and Eclipse 3.7 (Indigo) - http://dnadolny.github.io/java-to-scala-update-site/e37-scala210-3.0/
-* Scala 2.10 and Eclipse 4.2 (Juno) - http://dnadolny.github.io/java-to-scala-update-site/e38-scala210-3.0/
+* Scala 2.9 (any Eclipse version) - http://dnadolny.github.io/java-to-scala-update-site/generic-scala29/
+* Scala 2.10 (any Eclipse version) - http://dnadolny.github.io/java-to-scala-update-site/generic-scala210/
 
 ## Note
 
