@@ -29,5 +29,31 @@ There are some problems which are either hard or impossible to fix. Here is a pa
 
 * Java allows you to have multiple constructors, each of which could call a different parent class constructor. This cannot be represented in Scala.
 * Java allows you to call a static method of a parent class by using name of the subclass. The Scala conversion can't detect that to change it without type information, so you'll get a compile error (which can easily be fixed, by using the name of the class that actually contains the static method rather than the child class).
-
+* Passing an array to a method that is expecting varargs is valid in Java but must be indicated explicitly in Scala (by adding the type annotation `: _*`)
+* If a generic parameter is expected but not supplied (i.e. using raw types), Java gives a warning but Scala will give an error.
+* Some operations are allowed in Java but not in Scala. For example, `int a = 0; double d = 3.9; a += d;` is valid Java but the equivalent code is not valid in Scala.
+* Any field in a class converted to Scala but still called from Java will not compile, since Scala exposes fields as a getter and possibly setter method. Java code calling the converted Scala code will need to change field access `obj.someField` to the method `obj.someField()`, and assignment `obj.someField = 3` to `obj.someField_$eq(3)`. Alternately, annotate the field with `@BeanProperty` and Scala will generate Java style getters and setters.
+* If the same identifier is used in 2 or more of the following places you will probably have problems: as a field name, as a constructor argument name, as a zero-arg method name.
+* **Very bad**: Calling a generic varargs method by passing an array will compile but not do what you want at runtime. This is sinister enough that it deserves an example. In Java:
+```java
+private static <T> void printIt(T... ts) {
+    for (T t : ts) {
+        System.out.println("one t: " + t);
+    }
+}
+String[] args = {"a", "b", "c"};
+printIt(args);
+```
+The result is "one t: a", "one t: b", "one t: c" (on separate lines). When we convert that to Scala we get:
+```scala
+private def printIt[T](ts: T*) {
+  for (t <- ts) {
+    println("one t: " + t)
+  }
+}
+val args = Array("a", "b", "c")
+printIt(args)
+```
+The result this time: "one t: [Ljava.lang.String;@2ce908"
+This is a different manifestation of the varargs problem described earlier, only it doesn't result in a compilation error. To fix it, you need to add the type annotation as above (`args: _*`)
 
