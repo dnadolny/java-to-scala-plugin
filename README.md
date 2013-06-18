@@ -35,6 +35,7 @@ There are some problems which are either hard or impossible to fix. Here is a pa
 * Any field in a class converted to Scala but still called from Java will not compile, since Scala exposes fields as a getter and possibly setter method. Java code calling the converted Scala code will need to change field access `obj.someField` to the method `obj.someField()`, and assignment `obj.someField = 3` to `obj.someField_$eq(3)`. Alternately, annotate the field with `@BeanProperty` and Scala will generate Java style getters and setters.
 * If the same identifier is used in 2 or more of the following places you will probably have problems: as a field name, as a constructor argument name, as a zero-arg method name.
 * **Very bad**: Calling a generic varargs method by passing an array will compile but not do what you want at runtime. This is sinister enough that it deserves an example. In Java:
+
 ```java
 private static <T> void printIt(T... ts) {
     for (T t : ts) {
@@ -45,6 +46,7 @@ String[] args = {"a", "b", "c"};
 printIt(args);
 ```
 The result is "one t: a", "one t: b", "one t: c" (on separate lines). When we convert that to Scala we get:
+
 ```scala
 private def printIt[T](ts: T*) {
   for (t <- ts) {
