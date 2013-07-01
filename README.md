@@ -60,4 +60,4 @@ printIt(args)
 ```
 The result this time: "one t: [Ljava.lang.String;@2ce908"
 This is a different manifestation of the varargs problem described earlier, only it doesn't result in a compilation error. To fix it, you need to add the type annotation as above (`args: _*`)
-
+* Any Java code that did not use the `@Override` annotation when possible (overriding a method from a parent class or implementing a method from an interface) will not have the `override` keyword when converted to Scala. The `override` keyword is required in those cases, and will result in a compile error.
