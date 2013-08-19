@@ -1,8 +1,7 @@
-package com.github.dnadolny.javatoscala
+package com.github.dnadolny.javatoscala.conversion
 
 import org.junit.Test
 import org.junit.Assert._
-import com.github.dnadolny.javatoscala.conversion.ScalagenConverter
 
 class SnippetConverterTest {
   private val converter = new SnippetConverter(ScalagenConverter)

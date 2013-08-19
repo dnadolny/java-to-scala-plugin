@@ -11,12 +11,12 @@ import org.eclipse.swt.dnd.TextTransfer
 import org.eclipse.swt.widgets.Display
 import org.eclipse.text.edits.ReplaceEdit
 import org.eclipse.ui.handlers.HandlerUtil
-import scala.tools.eclipse.ScalaPlugin
 
 import com.github.dnadolny.javatoscala.conversion.ScalagenConverter
+import com.github.dnadolny.javatoscala.conversion.SnippetConverter
+import com.github.dnadolny.javatoscala.text.Indenter
 
 class PasteJavaAsScalaCommand(snippetConverter: SnippetConverter) extends AbstractHandler {
-  private val AlreadyPrintedNoticeKey = "com.github.dnadolny.java-to-scala.alreadyPrintedNotice"
   private val PluginUrl = "https://github.com/dnadolny/java-to-scala-plugin"
   private val ConversionWarning = """/*
  * One-time warning:
@@ -46,11 +46,11 @@ class PasteJavaAsScalaCommand(snippetConverter: SnippetConverter) extends Abstra
 
         snippetConverter.convertSnippet(text) match {
           case Some(convertedScala) => {
-            val scala = if (alreadyPrintedNotice) {
+            val scala = if (Preferences.alreadyPrintedNotice) {
               convertedScala
             }
             else {
-              setAlreadyPrintedNotice()
+              Preferences.setAlreadyPrintedNotice()
               ConversionWarning + convertedScala
             }
             val numSpaces = document.get(0, offset).reverse.indexOf('\n')
@@ -68,7 +68,5 @@ class PasteJavaAsScalaCommand(snippetConverter: SnippetConverter) extends Abstra
     null
   }
   
-  private def alreadyPrintedNotice = ScalaPlugin.plugin.getPreferenceStore.getBoolean(AlreadyPrintedNoticeKey)
-  
-  private def setAlreadyPrintedNotice() = ScalaPlugin.plugin.getPreferenceStore.setValue(AlreadyPrintedNoticeKey, true)
+
 }

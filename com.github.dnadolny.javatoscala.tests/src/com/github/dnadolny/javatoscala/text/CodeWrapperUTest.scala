@@ -1,4 +1,4 @@
-package com.github.dnadolny.javatoscala
+package com.github.dnadolny.javatoscala.text
 
 import org.junit.Test
 import org.junit.Assert._
@@ -18,7 +18,6 @@ class CodeWrapperUTest {
   
   @Test
   def `remove class wrapper (including newlines) and fix indentation` {
-    println(ScalagenConverter.safeConvert("class Snippet { private void snippet() { String str; } }"))
     assertEquals("code\n  code2\ncode3", removeClassWrapper("""class Snippet {
 
   code

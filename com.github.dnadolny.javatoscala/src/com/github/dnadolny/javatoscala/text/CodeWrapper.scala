@@ -1,4 +1,4 @@
-package com.github.dnadolny.javatoscala
+package com.github.dnadolny.javatoscala.text
 
 import org.apache.commons.lang3.StringUtils
 
@@ -26,8 +26,6 @@ object CodeWrapper {
     }
   }
   
-
-
   def wrapWithClassAndMethod(snippet: String) = "class Snippet { public void snippet() { " + snippet + " } }"
 
   def removeClassAndMethodWrapper(fullScala: String) = {

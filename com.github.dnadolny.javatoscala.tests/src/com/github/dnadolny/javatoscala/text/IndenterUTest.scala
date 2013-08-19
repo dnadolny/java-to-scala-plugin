@@ -1,4 +1,4 @@
-package com.github.dnadolny.javatoscala
+package com.github.dnadolny.javatoscala.text
 
 import org.junit.Test
 import org.junit.Assert._
@@ -19,5 +19,10 @@ e"""
      d
      e"""
     assertEquals(expected, Indenter.indentAllExceptFirstLine(toIndent, numSpaces = 5))
+  }
+  
+  @Test
+  def `empty input` {
+    assertEquals("", Indenter.indentAllExceptFirstLine("", numSpaces = 2))
   }
 }

@@ -39,4 +39,34 @@
       </command>
     </menuContribution>
   </extension>
+  
+  <extension point="org.eclipse.ui.popupMenus">
+    <objectContribution
+      objectClass="org.eclipse.jdt.core.IJavaElement"
+      id="com.github.dnadolny.javatoscala.ConvertSelectionAction">
+      <visibility>
+        <and>
+          <or>
+            <objectClass name="org.eclipse.jdt.core.ICompilationUnit"/>
+            <objectClass name="org.eclipse.jdt.core.IPackageFragment"/>
+            <objectClass name="org.eclipse.jdt.core.IPackageFragmentRoot"/>
+          </or>
+          <not>
+            <objectClass name="scala.tools.eclipse.contribution.weaving.jdt.IScalaCompilationUnit"/>
+          </not>
+        </and>
+      </visibility>
+      <action
+        label="Convert to Scala"
+        class="com.github.dnadolny.javatoscala.convertcu.ConvertCompilationUnitsAction"
+        menubarPath="org.eclipse.jdt.ui.refactoring.menu"
+        enablesFor="+"
+        id="ConvertSelectionAction">
+      </action>
+    </objectContribution>
+  </extension>
+      
+   <extension point="org.eclipse.core.runtime.preferences">
+      <initializer class="com.github.dnadolny.javatoscala.PreferencesInitializer"></initializer>
+   </extension>
 </plugin>
