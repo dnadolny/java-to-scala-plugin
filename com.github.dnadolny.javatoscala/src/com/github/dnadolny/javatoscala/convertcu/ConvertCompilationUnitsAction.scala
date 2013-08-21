@@ -108,9 +108,10 @@ class ConvertCompilationUnitsAction extends ActionDelegate with HasLogger {
         reconcile(scalaCU)
   
         scalaCU.commitWorkingCopy(true, NullProgressMonitor)
+        scalaCU.discardWorkingCopy()
         
         if (settings.deleteJavaAfterConversion) {
-          javaCU.delete(false, null) //will fail with an exception if the file is out of sync with the fs
+          javaCU.delete(false, NullProgressMonitor) //will fail with an exception if the file is out of sync with the fs
         }
 
         CUConversionSuccess(scalaCU)
@@ -120,6 +121,4 @@ class ConvertCompilationUnitsAction extends ActionDelegate with HasLogger {
     }
     case ConversionFailure(_, e) => CUConversionFailure(e)
   }
-
 }
-//TODO: bug - if you delete the file it creates, it does get deleted but will still show up in the package explorer, even after a refresh. need to restart eclipse to get it to go away
