@@ -7,7 +7,7 @@
       plugin="com.github.dnadolny.javatoscala">
 
    <description url="https://github.com/dnadolny/java-to-scala-plugin">
-      Convert Java to Scala with the hotkey Ctrl+Shift+V, or with the context menu item &quot;Paste (convert Java to Scala)&quot;.
+      Convert Java to Scala with the hotkey Ctrl+Shift+V, or with the context menu item &quot;Paste (convert Java to Scala)&quot;. You can also convert a Java class, package, or source folder by right clicking on it and selecting &quot;Convert to Scala&quot;
    </description>
 
    <copyright url="https://github.com/dnadolny/java-to-scala-plugin">

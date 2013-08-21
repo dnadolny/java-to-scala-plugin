@@ -17,17 +17,17 @@ class A {
 import java.util.List;
 class A {
   List<String> strings;
-}""").get)
+}""").toOption.get)
   }
   
   @Test
   def `convert variable definition by wrapping it in a method` {
-    assertEquals("val str: String = null", converter.convertSnippet("String str;").get)
+    assertEquals("val str: String = null", converter.convertSnippet("String str;").toOption.get)
   }
   
   @Test
   def `convert method that needs to be wrapped in a class` {
-    assertEquals("def method() {\n}", converter.convertSnippet("public void method() {}").get)
+    assertEquals("def method() {\n}", converter.convertSnippet("public void method() {}").toOption.get)
   }
   
   @Test
@@ -37,7 +37,7 @@ class A {
   def snippet() {
     val str: String = null
   }
-}""", converter.convertSnippet("String str;", keepWrapper = true).get)
+}""", converter.convertSnippet("String str;", keepWrapper = true).toOption.get)
   }
   
   @Test
@@ -46,7 +46,7 @@ class A {
 
   def method() {
   }
-}""", converter.convertSnippet("public void method() {}", keepWrapper = true).get)
+}""", converter.convertSnippet("public void method() {}", keepWrapper = true).toOption.get)
   }
   
   @Test
@@ -62,14 +62,14 @@ for (String str : strings) {
     if (str.startsWith("b")) {
         System.out.println(str);
     }
-}""").get)
+}""").toOption.get)
   }
   
   @Test
   def `static field has warning that it's static because we didn't try to wrap it in a method (workaround for scalagen/javaparser bug)` {
     assertEquals("""//***** Static fields/methods below, these should go in a companion object *****
 var a: Int = _
-//***** End of static fields/methods *****""", converter.convertSnippet("static int a;").get)
+//***** End of static fields/methods *****""", converter.convertSnippet("static int a;").toOption.get)
   }
 
 }

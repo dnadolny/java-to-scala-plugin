@@ -1,4 +1,4 @@
-package com.github.dnadolny.javatoscala
+package com.github.dnadolny.javatoscala.convertsnippet
 
 import scala.tools.eclipse.ScalaSourceFileEditor
 
@@ -11,20 +11,25 @@ import org.eclipse.swt.dnd.TextTransfer
 import org.eclipse.swt.widgets.Display
 import org.eclipse.text.edits.ReplaceEdit
 import org.eclipse.ui.handlers.HandlerUtil
+import org.eclipse.ui.PlatformUI
 
+import com.github.dnadolny.javatoscala.conversion.ConversionSuccess
+import com.github.dnadolny.javatoscala.conversion.MultiConversionFailure
 import com.github.dnadolny.javatoscala.conversion.ScalagenConverter
 import com.github.dnadolny.javatoscala.conversion.SnippetConverter
 import com.github.dnadolny.javatoscala.text.Indenter
+import com.github.dnadolny.javatoscala.JavaToScalaPlugin
+import com.github.dnadolny.javatoscala.Preferences
 
 class PasteJavaAsScalaCommand(snippetConverter: SnippetConverter) extends AbstractHandler {
-  private val PluginUrl = "https://github.com/dnadolny/java-to-scala-plugin"
+  
   private val ConversionWarning = """/*
  * One-time warning:
  * The Java to Scala conversion is nowhere near perfect (for various reasons).
  * The recommended way to use this feature is as the starting point for a conversion.
  * You should expect to heavily refactor the converted code, as well as review it for correctness.
  *
- * Report bugs to: """ + PluginUrl + """
+ * Report bugs to: """ + JavaToScalaPlugin.Url + """
  */
 """
 
@@ -45,7 +50,7 @@ class PasteJavaAsScalaCommand(snippetConverter: SnippetConverter) extends Abstra
         val offset = textSelection.getOffset()
 
         snippetConverter.convertSnippet(text) match {
-          case Some(convertedScala) => {
+          case ConversionSuccess(convertedScala) => {
             val scala = if (Preferences.alreadyPrintedNotice) {
               convertedScala
             }
@@ -60,8 +65,9 @@ class PasteJavaAsScalaCommand(snippetConverter: SnippetConverter) extends Abstra
             edit.apply(document)
             editor.getSelectionProvider().setSelection(new TextSelection(offset + indentedScala.length, 0))
           }
-          case None =>
-            MessageDialog.openError(null, "Error converting Java to Scala", "There was a problem converting Java to Scala.\n\nThis is probably because there was a problem parsing the Java code.\n\nMake sure that the code on the clipboard has flawless syntax, including closing brackets and semicolons, and try again.\n\nReport bugs at " + PluginUrl)
+          case failure: MultiConversionFailure =>
+            val window = PlatformUI.getWorkbench.getActiveWorkbenchWindow
+            new ConvertSnippetErrorDialog(window.getShell, failure).open()
         }
       case _ => MessageDialog.openError(null, "Error converting Java to Scala", "Couldn't cast the editor to ScalaSourceFileEditor. This should never happen since the plugin.xml won't enable the menu item unless we're in a Scala editor")
     }
