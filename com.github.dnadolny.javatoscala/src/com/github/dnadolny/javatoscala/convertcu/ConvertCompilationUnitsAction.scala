@@ -1,7 +1,6 @@
 package com.github.dnadolny.javatoscala.convertcu
 
 import scala.collection.JavaConverters.asScalaIteratorConverter
-import scala.tools.eclipse.util.HasLogger
 
 import org.eclipse.core.runtime.jobs.Job
 import org.eclipse.core.runtime.IProgressMonitor
@@ -29,7 +28,7 @@ import com.github.dnadolny.javatoscala.convertcu.eclipse.jdt.RichPackageFragment
 import com.github.dnadolny.javatoscala.EditorHelper
 import com.github.dnadolny.javatoscala.JavaToScalaPlugin
    
-class ConvertCompilationUnitsAction extends ActionDelegate with HasLogger {
+class ConvertCompilationUnitsAction extends ActionDelegate {
   private val converter = ScalagenConverter
   private val NullProgressMonitor: IProgressMonitor = null //yes, really
 

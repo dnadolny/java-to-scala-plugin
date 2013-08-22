@@ -2,8 +2,6 @@ package com.github.dnadolny.javatoscala.convertsnippet
 
 import java.net.URL
 
-import scala.tools.eclipse.util.HasLogger
-
 import org.eclipse.jface.dialogs.Dialog
 import org.eclipse.jface.dialogs.IDialogConstants
 import org.eclipse.swt.custom.CLabel
@@ -18,7 +16,7 @@ import com.github.dnadolny.javatoscala.conversion.MultiConversionFailure
 import com.github.dnadolny.javatoscala.util.Java7Feature
 import com.github.dnadolny.javatoscala.JavaToScalaPlugin
 
-class ConvertSnippetErrorDialog(shell: Shell, conversionFailure: MultiConversionFailure) extends Dialog(shell) with HasLogger {
+class ConvertSnippetErrorDialog(shell: Shell, conversionFailure: MultiConversionFailure) extends Dialog(shell) {
   protected override def configureShell(shell: Shell): Unit = {
     super.configureShell(shell)
     shell.setText("Error converting Java to Scala")

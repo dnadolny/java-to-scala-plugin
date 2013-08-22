@@ -1,7 +1,5 @@
 package com.github.dnadolny.javatoscala.convertcu
 
-import scala.tools.eclipse.util.HasLogger
-
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.jdt.core.IPackageFragmentRoot
 import org.eclipse.jdt.core.JavaCore
@@ -18,7 +16,7 @@ import org.eclipse.swt.SWT
 import com.github.dnadolny.javatoscala.jface.TreeViewerAdapter
 import com.github.dnadolny.javatoscala._
 
-class TargetFolderDialog(shell: Shell) extends Dialog(shell) with HasLogger {
+class TargetFolderDialog(shell: Shell) extends Dialog(shell) {
   private var errorLabel: CLabel = _
 
   private var targetSourceFolder: IPackageFragmentRoot = _
