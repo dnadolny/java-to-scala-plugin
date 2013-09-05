@@ -24,7 +24,6 @@ class ConvertSnippetErrorDialog(shell: Shell, conversionFailure: MultiConversion
 
   protected override def createDialogArea(parent: Composite): Control = {
     val container = createContainer(parent)
-    container.setLayoutData(fill)
 
     createErrorLabel(container)
     createJava7Warning(container)
@@ -36,7 +35,7 @@ class ConvertSnippetErrorDialog(shell: Shell, conversionFailure: MultiConversion
 
   private def createContainer(parent: Composite): Composite = {
     val container = new Composite(parent, SWT.NONE)
-    container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false))
+    container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true))
     val containerLayout = new GridLayout
     containerLayout.marginHeight = 10
     containerLayout.marginWidth = 10
@@ -64,7 +63,7 @@ class ConvertSnippetErrorDialog(shell: Shell, conversionFailure: MultiConversion
 
   def createCodeErrorTabs(container: Composite): Unit = {
     val codeErrorTabs = new TabFolder(container, SWT.BORDER)
-    val tabsLayoutData = new GridData(SWT.TOP, SWT.LEFT, true, true)
+    val tabsLayoutData = new GridData(SWT.FILL, SWT.FILL, true, true)
     tabsLayoutData.minimumWidth = 500
     tabsLayoutData.minimumHeight = 350
     codeErrorTabs.setLayoutData(tabsLayoutData)
