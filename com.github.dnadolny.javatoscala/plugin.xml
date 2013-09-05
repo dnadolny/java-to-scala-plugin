@@ -67,6 +67,15 @@
   </extension>
       
    <extension point="org.eclipse.core.runtime.preferences">
-      <initializer class="com.github.dnadolny.javatoscala.PreferencesInitializer"></initializer>
+      <initializer class="com.github.dnadolny.javatoscala.preferences.PreferencesInitializer"></initializer>
+   </extension>
+   
+   <extension point="org.eclipse.ui.preferencePages">
+     <page
+       category="org.scala-ide.sdt.core.preferences"
+       class="com.github.dnadolny.javatoscala.preferences.PreferencesPage"
+       id="com.github.dnadolny.javatoscala.preferences.PreferencesPage"
+       name="Java to Scala Conversion">
+     </page>
    </extension>
 </plugin>

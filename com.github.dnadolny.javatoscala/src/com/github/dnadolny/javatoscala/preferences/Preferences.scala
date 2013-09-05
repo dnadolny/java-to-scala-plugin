@@ -1,13 +1,13 @@
-package com.github.dnadolny.javatoscala
+package com.github.dnadolny.javatoscala.preferences
 
-import scala.tools.eclipse.ScalaPlugin
+import com.github.dnadolny.javatoscala.JavaToScalaPlugin
 
 object Preferences {
   private val PrefPrefix = "com.github.dnadolny.java-to-scala."
 
   private def key(name: String) = PrefPrefix + name
 
-  def prefs = ScalaPlugin.plugin.getPreferenceStore
+  def prefs = JavaToScalaPlugin.prefStore
 
   val AlreadyPrintedNoticeKey = key("alreadyPrintedNotice")
   def alreadyPrintedNotice: Boolean = prefs.getBoolean(AlreadyPrintedNoticeKey)

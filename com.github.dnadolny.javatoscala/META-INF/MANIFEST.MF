@@ -29,6 +29,7 @@ Import-Package:
  scala.tools.eclipse;apply-aspects:=false,
  scala.tools.eclipse.contribution.weaving.jdt.ui.javaeditor.formatter;apply-aspects:=false
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Activator: com.github.dnadolny.javatoscala.JavaToScalaPlugin
 Bundle-ClassPath: .,
  target/lib/scalagen-0.3.0_scala-version.jar,
  target/dependency/javaparser-1.0.8.jar,

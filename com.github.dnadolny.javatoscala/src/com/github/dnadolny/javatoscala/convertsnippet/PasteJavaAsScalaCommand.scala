@@ -19,7 +19,7 @@ import com.github.dnadolny.javatoscala.conversion.ScalagenConverter
 import com.github.dnadolny.javatoscala.conversion.SnippetConverter
 import com.github.dnadolny.javatoscala.text.Indenter
 import com.github.dnadolny.javatoscala.JavaToScalaPlugin
-import com.github.dnadolny.javatoscala.Preferences
+import com.github.dnadolny.javatoscala.preferences.Preferences
 
 class PasteJavaAsScalaCommand(snippetConverter: SnippetConverter) extends AbstractHandler {
   

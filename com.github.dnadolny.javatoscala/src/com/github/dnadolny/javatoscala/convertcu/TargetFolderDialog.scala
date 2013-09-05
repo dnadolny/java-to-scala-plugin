@@ -12,9 +12,9 @@ import org.eclipse.swt.events._
 import org.eclipse.swt.layout._
 import org.eclipse.swt.widgets._
 import org.eclipse.swt.SWT
-
 import com.github.dnadolny.javatoscala.jface.TreeViewerAdapter
 import com.github.dnadolny.javatoscala._
+import com.github.dnadolny.javatoscala.preferences._
 
 class TargetFolderDialog(shell: Shell) extends Dialog(shell) {
   private var errorLabel: CLabel = _
@@ -107,7 +107,7 @@ class TargetFolderDialog(shell: Shell) extends Dialog(shell) {
   
   private def createDeleteJavaCheckbox(container: Composite): Unit = {
     val deleteJavaCheckbox = new Button(container, SWT.CHECK)
-    deleteJavaCheckbox.setText("Delete Java after conversion")
+    deleteJavaCheckbox.setText(Messages.DeleteJavaAfterConversion)
     deleteJavaCheckbox.setSelection(Preferences.deleteJavaAfterConversion)
     deleteJavaCheckbox.addSelectionListener(new SelectionAdapter() {
       override def widgetSelected(event: SelectionEvent): Unit = {
@@ -118,7 +118,7 @@ class TargetFolderDialog(shell: Shell) extends Dialog(shell) {
   
   private def createAppendJavaCheckbox(container: Composite): Unit = {
     val appendJavaCheckbox = new Button(container, SWT.CHECK)
-    appendJavaCheckbox.setText("Append original Java as a comment at the end of the file")
+    appendJavaCheckbox.setText(Messages.AppendJavaAsComment)
     appendJavaCheckbox.setSelection(Preferences.appendJavaAsComment)
     appendJavaCheckbox.addSelectionListener(new SelectionAdapter() {
       override def widgetSelected(event: SelectionEvent): Unit = {
