@@ -35,3 +35,4 @@ change_version "com.github.dnadolny.javatoscala.tests/META-INF/MANIFEST.MF" "[2.
 mvn -Drepo.scala-ide=http://download.scala-ide.org/sdk/next/e37/scala210/stable/site/ -Dscala.version=2.10.1 -Dversion.suffix=2_10 clean package
 rm -rf /tmp/javatoscala-build-ecosystem/generic-scala210
 cp -r com.github.dnadolny.javatoscala.update-site/target/site/ /tmp/javatoscala-build-ecosystem/generic-scala210
+

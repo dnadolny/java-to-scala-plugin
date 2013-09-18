@@ -13,7 +13,6 @@ import org.eclipse.ui.PlatformUI
 
 import com.github.dnadolny.javatoscala.conversion.ConversionFailure
 import com.github.dnadolny.javatoscala.conversion.MultiConversionFailure
-import com.github.dnadolny.javatoscala.util.Java7Feature
 import com.github.dnadolny.javatoscala.JavaToScalaPlugin
 
 class ConvertSnippetErrorDialog(shell: Shell, conversionFailure: MultiConversionFailure) extends Dialog(shell) {
@@ -24,18 +23,15 @@ class ConvertSnippetErrorDialog(shell: Shell, conversionFailure: MultiConversion
 
   protected override def createDialogArea(parent: Composite): Control = {
     val container = createContainer(parent)
-
     createErrorLabel(container)
-    createJava7Warning(container)
     createCodeErrorTabs(container)
     createReportBugLink(container)
-
     container
   }
 
   private def createContainer(parent: Composite): Composite = {
     val container = new Composite(parent, SWT.NONE)
-    container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true))
+    container.setLayoutData(fill)
     val containerLayout = new GridLayout
     containerLayout.marginHeight = 10
     containerLayout.marginWidth = 10
@@ -50,20 +46,9 @@ class ConvertSnippetErrorDialog(shell: Shell, conversionFailure: MultiConversion
     errorLabel.setImage(errorImage)
   }
 
-  def createJava7Warning(container: Composite): Unit = {
-    Java7Feature.detectFeatures(conversionFailure.convertFullClass.javaSource) match {
-      case Nil =>
-      case features =>
-        val java7detected = new CLabel(container, SWT.SHADOW_NONE)
-        java7detected.setLayoutData(new GridData(SWT.TOP, SWT.LEFT, false, false))
-        java7detected.setText("It looks like you might be using Java 7 features.\nUnfortunately, the Java parser used by this plugin doesn't support Java 7 yet.\nThese are the features detected:\n" + features.map(_.description).mkString(" - ", "\n - ", ""))
-        java7detected.setImage(warningImage)
-    }
-  }
-
   def createCodeErrorTabs(container: Composite): Unit = {
     val codeErrorTabs = new TabFolder(container, SWT.BORDER)
-    val tabsLayoutData = new GridData(SWT.FILL, SWT.FILL, true, true)
+    val tabsLayoutData = fill
     tabsLayoutData.minimumWidth = 500
     tabsLayoutData.minimumHeight = 350
     codeErrorTabs.setLayoutData(tabsLayoutData)
@@ -81,7 +66,7 @@ class ConvertSnippetErrorDialog(shell: Shell, conversionFailure: MultiConversion
 
       val fullError = new Text(tabContainer, SWT.READ_ONLY | SWT.MULTI | SWT.BORDER | SWT.V_SCROLL)
       fullError.setText(failure.cause.getMessage)
-      val fullErrorLayoutData = new GridData(SWT.FILL, SWT.FILL, true, true)
+      val fullErrorLayoutData = fill
       fullErrorLayoutData.minimumHeight = 100
       fullError.setLayoutData(fullErrorLayoutData)
 
@@ -89,7 +74,7 @@ class ConvertSnippetErrorDialog(shell: Shell, conversionFailure: MultiConversion
       codeLabel.setText("Java code:")
       val javaText = new Text(tabContainer, SWT.READ_ONLY | SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL)
       javaText.setText(failure.javaSource)
-      val javaTextLayoutData = new GridData(SWT.FILL, SWT.FILL, true, true)
+      val javaTextLayoutData = fill
       javaTextLayoutData.minimumHeight = 100
       javaText.setLayoutData(javaTextLayoutData)
 
