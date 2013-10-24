@@ -7,19 +7,5 @@
   </parent>
   <artifactId>com.github.dnadolny.javatoscala.tests</artifactId>
   <packaging>eclipse-test-plugin</packaging>
-
-  <build>
-    <sourceDirectory>src</sourceDirectory>
-    <plugins>
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-surefire-plugin</artifactId>
-        <configuration>
-          <testSuite>${project.artifactId}</testSuite>
-          <testClass>com.github.dnadolny.javatoscala.SomeInterestingCodeTest</testClass>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>
 
