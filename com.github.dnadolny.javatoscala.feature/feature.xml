@@ -2,7 +2,7 @@
 <feature
       id="com.github.dnadolny.javatoscala.feature"
       label="Java to Scala"
-      version="0.1.0.qualifier"
+      version="1.0.0.qualifier"
       provider-name="com.github.dnadolny"
       plugin="com.github.dnadolny.javatoscala">
 
