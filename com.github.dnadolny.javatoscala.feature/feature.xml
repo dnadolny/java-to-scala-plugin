@@ -209,7 +209,7 @@ All rights reserved.
    </license>
 
    <url>
-      <update label="Java to Scala plugin update site" url="http://example.org/update/site"/>
+      <update label="Java to Scala plugin update site" url="http://java-to-scala-plugin.dnadolny.com/update-site"/>
    </url>
 
    <requires>
