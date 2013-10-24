@@ -3,7 +3,11 @@ Java to Scala plugin (Scala IDE)
 
 This is a plugin for the Scala IDE for eclipse that lets you convert Java to Scala.
 
-To use it, copy the Java code to your clipboard, open a Scala editor, and press Ctrl+Shift+V (or right click and select "Paste (convert Java to Scala)").
+To use it, right click on any Java class, package, or source folder and select "Convert to Scala"
+
+![Screenshot](https://github.com/dnadolny/java-to-scala-plugin/raw/master/website/screenshot2.png "Screenshot of Java class/package/source folder context menu")
+
+You can also copy Java code to your clipboard, open a Scala editor, and press Ctrl+Shift+V (or right click and select "Paste (convert Java to Scala)").
 
 ![Screenshot](https://github.com/dnadolny/java-to-scala-plugin/raw/master/website/screenshot.png "Screenshot of Scala editor context menu")
 
