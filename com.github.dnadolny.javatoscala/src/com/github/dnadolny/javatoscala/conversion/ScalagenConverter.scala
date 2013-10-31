@@ -1,6 +1,7 @@
 package com.github.dnadolny.javatoscala.conversion
 
 import org.apache.commons.lang3.StringUtils
+import com.mysema.scalagen.ConversionSettings
 
 object ScalagenConverter extends Converter {
   private val ImportJavaConversions = "//remove if not needed\nimport scala.collection.JavaConversions._\n"
@@ -11,7 +12,7 @@ object ScalagenConverter extends Converter {
   private def removeJavaConversionsImport(scala: String) = StringUtils.replace(scala, ImportJavaConversions, "").replaceAll(ExtraNewlinesAfterPackage, "package $1\n\n")
 
   def safeConvert(javaSource: String): ConversionResult = try {
-    val scala = com.mysema.scalagen.Converter.getInstance().convert(javaSource)
+    val scala = com.mysema.scalagen.Converter.getInstance().convert(javaSource, ConversionSettings(splitLongLines = false))
     if (needsJavaConversions(scala)) ConversionSuccess(scala)
     else ConversionSuccess(removeJavaConversionsImport(scala))
   } catch {
