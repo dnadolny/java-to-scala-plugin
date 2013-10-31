@@ -100,9 +100,10 @@ class ConvertCompilationUnitsAction extends ActionDelegate {
         scalaCU.becomeWorkingCopy(NullProgressMonitor)
 
         val buffer = scalaCU.getBuffer
-        buffer.append(converted.replaceAllLiterally("\n", settings.lineDelimiter))
         if (settings.appendJavaAsComment) {
-          buffer.append(javaInfo.contentsAsComment(settings.lineDelimiter))
+          buffer.append(ScalaSourceModifier.addComment(converted, javaInfo.contentsAsComment(settings.lineDelimiter), settings.lineDelimiter))
+        } else {
+          buffer.append(converted.replaceAllLiterally("\n", settings.lineDelimiter))
         }
         reconcile(scalaCU)
   

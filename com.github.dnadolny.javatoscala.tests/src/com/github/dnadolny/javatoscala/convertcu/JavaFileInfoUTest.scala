@@ -10,6 +10,7 @@ class JavaFileInfoUTest {
 /*some comment here*/""")
     assertEquals("""
 /*
+Original Java:
 some code here
 |*some comment here*|
 */""", javaFileInfo.contentsAsComment("\n"))

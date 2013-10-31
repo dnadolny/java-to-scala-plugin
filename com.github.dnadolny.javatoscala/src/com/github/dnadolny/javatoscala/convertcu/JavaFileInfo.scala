@@ -5,7 +5,7 @@ import org.eclipse.jdt.core.ICompilationUnit
 
 case class JavaFileInfo(fileName: String, packageName: String, contents: String) {
   def contentsAsComment(lineDelimiter: String) = 
-    lineDelimiter + "/*" + lineDelimiter + 
+    lineDelimiter + "/*" + lineDelimiter + "Original Java:" + lineDelimiter +
     contents.replaceAllLiterally("/*", "|*").replaceAllLiterally("*/", "*|") + 
     lineDelimiter + "*/"
 }
