@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Java to Scala plugin
 Bundle-SymbolicName: com.github.dnadolny.javatoscala;singleton:=true
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-Vendor: Donny Nadolny
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
