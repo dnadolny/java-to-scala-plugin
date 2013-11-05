@@ -11,11 +11,9 @@ You can also copy Java code to your clipboard, open a Scala editor, and press Ct
 
 ![Screenshot](https://github.com/dnadolny/java-to-scala-plugin/raw/master/website/screenshot.png "Screenshot of Scala editor context menu")
 
-## Installation (Eclipse Update Site)
+## Installation
 
-In Eclipse go to Help > Install New Software, then add the appropriate update site below. You need to have the [Scala IDE](http://scala-ide.org) installed already.
-* Scala 2.9 (any Eclipse version) - http://dnadolny.github.io/java-to-scala-update-site/generic-scala29/
-* Scala 2.10 (any Eclipse version) - http://dnadolny.github.io/java-to-scala-update-site/generic-scala210/
+In Eclipse go to "Help" > "Install New Software", pick the Scala IDE update site (http://download.scala-ide.org/releases-...), expand "Scala IDE plugins (incubation)" and select "Java to Scala". You need to have the latest version of the [Scala IDE](http://scala-ide.org) installed already (Help > Check for Updates, if the Scala IDE is there then update it).
 
 ## Note
 
