@@ -1,7 +1,5 @@
 package com.github.dnadolny.javatoscala.convertsnippet
 
-import scala.tools.eclipse.ScalaSourceFileEditor
-
 import org.eclipse.core.commands.AbstractHandler
 import org.eclipse.core.commands.ExecutionEvent
 import org.eclipse.jface.dialogs.MessageDialog
@@ -12,6 +10,7 @@ import org.eclipse.swt.widgets.Display
 import org.eclipse.text.edits.ReplaceEdit
 import org.eclipse.ui.handlers.HandlerUtil
 import org.eclipse.ui.PlatformUI
+import org.scalaide.ui.internal.editor.ScalaSourceFileEditor
 
 import com.github.dnadolny.javatoscala.conversion.ConversionSuccess
 import com.github.dnadolny.javatoscala.conversion.MultiConversionFailure
