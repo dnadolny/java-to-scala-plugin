@@ -65,14 +65,9 @@ class TargetFolderDialog(shell: Shell) extends Dialog(shell) {
     treeViewer.setInput(JavaCore.create(workspaceRoot))
     
     treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-      private var firstSelection = true
       override def selectionChanged(event: SelectionChangedEvent) {
-        //when the dialog loads, this method is called and the selection is a project, which is invalid
-        //however, we don't want to present an error until the user actually clicks one
         val selection = event.getSelection.asInstanceOf[IStructuredSelection]
-        if (!firstSelection)
-          validate(selection.getFirstElement)
-        firstSelection = false
+        validate(selection.getFirstElement)
       }
     })
 
