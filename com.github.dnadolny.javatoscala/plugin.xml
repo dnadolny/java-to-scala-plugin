@@ -20,6 +20,11 @@
     <handler
       class="com.github.dnadolny.javatoscala.convertsnippet.PasteJavaAsScalaCommand"
       commandId="com.github.dnadolny.javatoscala.convertsnippet.pasteConvertJavaToScalaCommand">
+      <enabledWhen>
+        <with variable="activeEditorId">
+          <equals value="scala.tools.eclipse.ScalaSourceFileEditor"></equals>
+        </with>
+      </enabledWhen>
     </handler>
   </extension>
 
@@ -31,11 +36,7 @@
         label="Paste (convert Java to Scala)"
         mnemonic="c"
         style="push">
-        <visibleWhen checkEnabled="false">
-          <with variable="activeEditorId">
-            <equals value="scala.tools.eclipse.ScalaSourceFileEditor"></equals>
-          </with>
-        </visibleWhen>
+        <visibleWhen checkEnabled="true" />
       </command>
     </menuContribution>
   </extension>
