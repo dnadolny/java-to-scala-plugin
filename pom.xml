@@ -7,7 +7,7 @@
   </prerequisites>
   <groupId>com.github.dnadolny</groupId>
   <artifactId>com.github.dnadolny.javatoscala.build</artifactId>
-  <version>1.2.0-SNAPSHOT</version>
+  <version>1.3.0-SNAPSHOT</version>
   <name>Java to Scala plugin</name>
   <packaging>pom</packaging>
 

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Java to Scala plugin (Test)
 Bundle-SymbolicName: com.github.dnadolny.javatoscala.tests
-Bundle-Version: 1.2.0.qualifier
+Bundle-Version: 1.3.0.qualifier
 Bundle-Vendor: Donny Nadolny
 Fragment-Host: com.github.dnadolny.javatoscala
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
