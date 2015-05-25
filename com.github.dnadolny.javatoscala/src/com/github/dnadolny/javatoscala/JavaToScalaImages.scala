@@ -3,10 +3,9 @@ package com.github.dnadolny.javatoscala
 import java.net.MalformedURLException
 import java.net.URL
 
-import scala.tools.eclipse.ScalaImages
-
 import org.eclipse.core.runtime.Platform
 import org.eclipse.jface.resource.ImageDescriptor
+import org.scalaide.ui.ScalaImages
 
 object JavaToScalaImages {
   val Error = create("icons/full/obj16/error_obj.gif")

@@ -9,12 +9,12 @@
   </parent>
   <artifactId>com.github.dnadolny.javatoscala</artifactId>
   <packaging>eclipse-plugin</packaging>
-  
+
   <dependencies>
     <dependency>
       <groupId>com.mysema.scalagen</groupId>
-      <artifactId>scalagen_${scala.version}</artifactId>
-      <version>0.3.2</version>
+      <artifactId>scalagen_${scala.version.short}</artifactId>
+      <version>0.3.3</version>
     </dependency>
   </dependencies>
 
@@ -35,9 +35,9 @@
               <artifactItems>
                 <artifactItem>
                   <groupId>com.mysema.scalagen</groupId>
-                  <artifactId>scalagen_${scala.version}</artifactId>
+                  <artifactId>scalagen_${scala.version.short}</artifactId>
                   <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                  <destFileName>scalagen-0.3.2_scala-version.jar</destFileName>
+                  <destFileName>scalagen-0.3.3_scala-version.jar</destFileName>
                 </artifactItem>
                 <artifactItem>
                   <groupId>com.google.code.javaparser</groupId>

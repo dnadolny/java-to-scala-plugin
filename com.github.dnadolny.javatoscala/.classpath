@@ -8,6 +8,6 @@
 	<classpathentry kind="lib" path="target/dependency/commons-io-1.3.2.jar"/>
 	<classpathentry kind="lib" path="target/dependency/commons-lang3-3.0.1.jar"/>
 	<classpathentry kind="lib" path="target/dependency/javaparser-1.0.10.jar"/>
-	<classpathentry kind="lib" path="target/lib/scalagen-0.3.2_scala-version.jar"/>
+	<classpathentry kind="lib" path="target/lib/scalagen-0.3.3_scala-version.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
